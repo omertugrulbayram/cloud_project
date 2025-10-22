@@ -1,67 +1,73 @@
-# cloud_project
-My First Serverless Function TSGK Project
+# ⚡ My First Serverless Function+
 
-Bu proje, AWS Lambda + API Gateway kullanılarak oluşturulmuş basit ama fonksiyonel bir sunucusuz (serverless) uygulamadır.
-Kullanıcılar /hello API uç noktasına erişip isimlerini vererek selam alabilir, ayrıca POST isteği ile sayıların karesini hesaplayabilir.
+Bu proje, AWS Lambda ve API Gateway kullanılarak oluşturulmuş tamamen sunucusuz (serverless) bir uygulamadır.
+Kullanıcı, API üzerinden “Hello” uç noktasına erişebilir ve basit bir HTML arayüzü ile bu verileri görebilir.
 
-Neden Bu Proje?
+---
 
-Amaç, modern bulut ortamında sunucusuz mimariyi deneyimlemek ve hızlıca çalışan bir API geliştirmektir.
-Sunucusuz yapılar sayesinde altyapı yönetimiyle uğraşmadan sadece iş mantığına odaklanabiliyoruz.
+🧠 Proje Amacı
+
+Modern bulut tabanlı uygulamaların sunucusuz mimari ile nasıl geliştirileceğini öğrenmek ve avantajlarını deneyimlemek.
 
 Motivasyon:
 
-AWS servislerini öğrenmek: Lambda, API Gateway, CloudWatch
+Sunucusuz mimari sayesinde altyapı yönetimine odaklanmadan sadece iş mantığını geliştirebilirsiniz.
 
-Sunucusuz mimarinin hız ve ölçeklenebilirliğini görmek
+AWS Lambda ve API Gateway kullanımı pratikte deneyimlenir.
 
-Basit bir CI/CD akışı ile deploy sürecini anlamak
+Basit bir web arayüzü ile fonksiyonun çıktısını görselleştirmek.
 
-Proje Yapısı
-Backend
+🧩 Proje Hakkında
 
-Lambda fonksiyonu Python ile yazıldı.
+Proje iki ana bileşenden oluşuyor:
 
-/hello uç noktası GET ve POST desteğine sahip:
+1️⃣ Backend (API Katmanı)
+
+AWS Lambda fonksiyonları ile yazılmıştır.
+
+API Gateway üzerinden /hello uç noktası açılmıştır.
+
+Fonksiyonlar Python ortamında çalışmaktadır.
+
+Örnek uç noktalar:
+
+GET /hello → {"message": "Hello, World!"}
 
 GET /hello?name=Omer → {"message": "Hello, Omer!"}
 
-POST /hello JSON: {"n":5} → {"n":5,"square":25}
+POST /square → JSON: {"n":5} → {"n":5,"square":25}
 
-CloudWatch logları ile tüm çağrılar izlenebilir.
+2️⃣ Frontend (Basit HTML/JS Arayüzü)
 
-Frontend (Opsiyonel)
+Statik olarak Lambda veya herhangi bir S3/host üzerinde çalıştırılabilir.
 
-Basit bir HTML + CSS + JS arayüzü ile API sonuçları gösterilebilir.
+API uç noktalarıyla etkileşim kurar ve kullanıcıya mesaj veya hesaplama sonuçlarını gösterir.
 
-Statik olarak S3 üzerinden yayınlanabilir.
-
-Kullanılan Teknolojiler
-
+🔧 Teknoloji Yığını
 Katman	Teknolojiler
 Backend	AWS Lambda, API Gateway, Python
-Logging	AWS CloudWatch
-Frontend	HTML, CSS, JavaScript (opsiyonel)
-Deployment	AWS SAM CLI, S3
+Frontend	HTML, CSS, JavaScript
+Deployment	AWS SAM CLI
+🌟 Özellikler
 
-Öne Çıkan Özellikler
+Sunucusuz Mimari: AWS üzerinde, yönetilmesi gereken sunucu yok.
 
-Sunucusuz: Sunucu yönetimine gerek yok, AWS her şeyi hallediyor.
+Hızlı Dağıtım: SAM CLI ile tek komutla deploy edilebilir.
 
-Hızlı: Kod değişikliği → sam deploy ile anında yayında.
+API Entegrasyonu: Frontend, Lambda fonksiyonlarının API uç noktalarıyla doğrudan iletişim kurar.
 
-İzlenebilir: CloudWatch logları sayesinde API çağrıları takip edilebilir.
+Cloud Logging: CloudWatch ile fonksiyon logları takip edilebilir.
 
-Kolay test: GET ve POST ile kolayca test edilebilir.
+Esnek Geliştirme: GET ve POST taleplerini destekler, parametre alıp işlem yapabilir.
 
-🧭 Kurulum ve Deploy
+🚀 Kurulum ve Çalıştırma
 
-1️⃣ AWS CLI ile IAM kullanıcı bilgilerinizi girin:
+SAM CLI ve AWS CLI kurulu olmalı. AWS IAM kullanıcı bilgilerinizi girin:
 
 aws configure
 
 
-2️⃣ Depoyu klonlayın ve SAM ile deploy edin:
+Projeyi deploy etmek için:
 
 git clone https://github.com/kullanici/my-first-serverless.git
 cd my-first-serverless
@@ -69,16 +75,14 @@ sam build
 sam deploy --guided
 
 
-3️⃣ Test etmek için tarayıcı veya Postman kullanabilirsiniz:
+Deploy tamamlandıktan sonra API URL’ini terminalde göreceksiniz ve tarayıcıdan test edebilirsiniz.
 
-GET  https://<api-id>.execute-api.<region>.amazonaws.com/Prod/hello?name=Omer
-POST https://<api-id>.execute-api.<region>.amazonaws.com/Prod/hello
-Body: {"n":5}
+🎬 Deneme
 
-💡 Notlar ve Öğrendiklerim
+GET /hello → varsayılan mesaj
 
-Serverless mimari ile altyapı derdi yok, sadece iş mantığına odaklanıyorsunuz.
+GET /hello?name=Omer → kişiselleştirilmiş mesaj
 
-En büyük zorluk: event objesini doğru parse etmek ve GET/POST mantığını düzgün ayırmak.
+POST /square → JSON üzerinden sayının karesi
 
-Bu yaklaşım özellikle hızlı prototipler, microservices ve küçük API servisleri için ideal.
+Frontend ile tüm çıktılar tarayıcıdan görüntülenebilir.
