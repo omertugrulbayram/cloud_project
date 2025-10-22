@@ -78,7 +78,7 @@ aws configure
 
 # Projeyi deploy etmek için:
 
-git clone https://github.com/kullanici/my-first-serverless.git
+git clone https://github.com/omertugrulbayram/cloud_project
 cd my-first-serverless
 sam build
 sam deploy --guided
@@ -95,3 +95,8 @@ GET /hello?name=Omer → kişiselleştirilmiş mesaj
 POST /square → JSON üzerinden sayının karesi
 
 Frontend ile tüm çıktılar tarayıcıdan görüntülenebilir.
+
+<img width="743" height="177" alt="image" src="https://github.com/user-attachments/assets/b5cf1e4b-05b3-4ed8-9fe4-4629b43c3031" />
+<img width="851" height="150" alt="image" src="https://github.com/user-attachments/assets/b97bcd1e-a438-4685-91f6-6d86a565da6d" />
+
+
