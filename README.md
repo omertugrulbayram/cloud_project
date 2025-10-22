@@ -5,7 +5,7 @@ Kullanıcı, API üzerinden “Hello” uç noktasına erişebilir ve basit bir 
 
 ---
 
-# 🧠 Proje Amacı
+## 🧠 Proje Amacı
 
 Modern bulut tabanlı uygulamaların sunucusuz mimari ile nasıl geliştirileceğini öğrenmek ve avantajlarını deneyimlemek.
 
@@ -23,7 +23,7 @@ Basit bir web arayüzü ile fonksiyonun çıktısını görselleştirmek.
 
 Proje iki ana bileşenden oluşuyor:
 
-# 1️⃣ Backend (API Katmanı)
+## 1️⃣ Backend (API Katmanı)
 
 - AWS Lambda fonksiyonları ile yazılmıştır.
 
